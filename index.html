@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>诺克萨斯杯</title>
+    <script src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
+    <style>
+
+	*{
+		margin:0;
+		padding:0;
+	}
+	.players{
+		float:left
+	}
+	.player-unit{
+		width:65px;
+		height:80px;
+		padding:10px;
+		margin:10px;
+		font:15px/1.3 'Open Sans', sans-serif;
+	}
+	#player{
+		list-style-type:none;
+	}
+	.img_player{
+		width:50px;
+		height:50px;
+	}
+	body{
+		font:15px/1.3 'Open Sans', sans-serif;
+		color: #5e5b64;
+		text-align:center;
+	}
+	.submit_button{
+	width:100%;
+	text-align:center;
+	}
+    </style>
+
+</head>
+<body>
+<div id="main">
+<div class="header">
+  <h1>诺克萨斯杯业余赛</h1>
+</div>
+<h2>目前已报名人数：{{2}}<h2>
+
+<ul id="player">
+  <li class="players" v-for="item in players" :key="item.name">
+	<div class="player-unit">
+		<img class="img_player" v-bind:src="item.img"/>
+		<h5>{{item.name}}<h5>
+		<input class="sub-radio" type="radio" name="aplay"   @change="changeResult(1)"><label>已就位</label>
+        <input class="sub-radio" type="radio" name="aplay"   @change="changeResult(0)"><label>再等等</label>
+	</div>
+  </li>
+</ul>
+<div class="submit_button">
+<button @click="submit">我要报名</button>
+</div>
+</div>
+<script>
+
+var demo=new Vue({
+  el: '#main',
+  data: {
+    players: [
+      { name: '吴涵雨' ,division:'歙县',position:'上单',img:'./image/why.jpg',killed:'3.2',creep:149,heros:[{name:'诺克萨斯之手',image:'无',usedNum:11,winRate:0}]},
+      { name: '江山' ,division:'祁门',position:'下路',img:'./image/js.jpg',killed:'3.2',creep:149,heros:[{name:'诺克萨斯之手',image:'无',usedNum:11,winRate:0}]},
+      { name: '汪敏生' ,division:'歙县',position:'中单',img:'./image/wms.jpg',killed:'3.2',creep:149,heros:[{name:'诺克萨斯之手',image:'无',usedNum:11,winRate:0}]},
+	  { name: '汪科宏' ,division:'祁门',position:'上单',img:'./image/wkh.jpg',killed:'3.2',creep:149,heros:[{name:'诺克萨斯之手',image:'无',usedNum:11,winRate:0}]},
+      { name: '鲍堃' ,division:'祁门',position:'中单',img:'./image/bk.jpg',killed:'3.2',creep:149,heros:[{name:'诺克萨斯之手',image:'无',usedNum:11,winRate:0}]},
+      { name: '詹达玮' ,division:'太平',position:'中单',img:'./image/zdw.jpg',killed:'3.2',creep:149,heros:[{name:'诺克萨斯之手',image:'无',usedNum:11,winRate:0}]},
+	  { name: '胡发杰' ,division:'歙县',position:'下路',img:'./image/hfj.jpg',killed:'3.2',creep:149,heros:[{name:'诺克萨斯之手',image:'无',usedNum:11,winRate:0}]},
+      { name: '陈建明' ,division:'歙县',position:'下路',img:'./image/cjm.jpg',killed:'3.2',creep:149,heros:[{name:'诺克萨斯之手',image:'无',usedNum:11,winRate:0}]},
+      { name: '杨一平' ,division:'歙县',position:'辅助',img:'./image/yyp.jpg',killed:'3.2',creep:149,heros:[{name:'诺克萨斯之手',image:'无',usedNum:11,winRate:0}]},
+	  { name: '项旭志' ,division:'歙县',position:'辅助',img:'./image/xxz.jpg',killed:'3.2',creep:149,heros:[{name:'诺克萨斯之手',image:'无',usedNum:11,winRate:0}]},
+      { name: '方原' ,division:'祁门',position:'下路',img:'./image/fy.jpg',killed:'3.2',creep:149,heros:[{name:'诺克萨斯之手',image:'无',usedNum:11,winRate:0}]},
+      { name: '黄绍伟' ,division:'歙县',position:'打野',img:'./image/hsw.jpg',killed:'3.2',creep:149,heros:[{name:'诺克萨斯之手',image:'无',usedNum:11,winRate:0}]}
+    ],
+	results:[]
+  },
+  methods: {
+      submit:function() {
+          console.log(this.results)
+      },
+      changeResult:function(score){
+          var temp = {score:score};
+          this.results.push(temp);
+      }
+}
+})
+</script>
+</body>
+</html>
